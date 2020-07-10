@@ -1,4 +1,4 @@
-package com.infinity.bank.api.controller.dto;
+package com.infinity.bank.api.controller.dto.request;
 
 
 public class TokenDto {

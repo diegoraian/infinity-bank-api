@@ -29,16 +29,17 @@ public abstract class AbstractModel implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected  Long id;
 
+    @JsonIgnore
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate
-    private Date createdAt;
+    private Date createdAt = new Date();
 
     @JsonIgnore
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", nullable = false)
     @LastModifiedDate
-    private Date updatedAt;
+    private Date updatedAt = new Date();
 
 
 	@Override

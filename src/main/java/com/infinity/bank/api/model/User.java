@@ -9,12 +9,14 @@ import javax.persistence.ManyToOne;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity(name="users")
 @Getter
 @Setter
+@Builder
 public class User extends AbstractModel implements UserDetails{
 
 	/**
@@ -25,6 +27,7 @@ public class User extends AbstractModel implements UserDetails{
 	private String name;
 	@ManyToOne(optional=false)
 	private BankData bankData;
+	
 	@Column( nullable=false)
 	private String password;
 

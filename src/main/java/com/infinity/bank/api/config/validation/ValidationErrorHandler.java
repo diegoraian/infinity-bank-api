@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.infinity.bank.api.BusinessException;
+
 @RestControllerAdvice
 public class ValidationErrorHandler {
 	@Autowired
@@ -53,9 +55,13 @@ public class ValidationErrorHandler {
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(LockedException.class)
 	public DefaultErrorDto handle(LockedException exception) {
-		DefaultErrorDto erro = new DefaultErrorDto(400, exception.getMessage());	
-		return erro;
+		return new DefaultErrorDto(400, exception.getMessage());
 	}	
-	
+
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(BusinessException.class)
+	public DefaultErrorDto handle(BusinessException exception) {
+		return new DefaultErrorDto(405, exception.getMessage());
+	}
 	
 }

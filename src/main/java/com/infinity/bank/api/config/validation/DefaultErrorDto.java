@@ -1,29 +1,26 @@
 package com.infinity.bank.api.config.validation;
 
+import com.infinity.bank.api.util.DataUtil;
+
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 public class DefaultErrorDto {
 
 	private Integer code;
 	private String message;
+	private String currentTime;
 	
+	public DefaultErrorDto(String message) {
+		this.message = message;
+		this.currentTime = DataUtil.getCurrentTimestamp();
+	}
 	
 	public DefaultErrorDto(Integer code, String message) {
-		super();
-		this.code = code;
-		this.message = message;
-	}
-	public Integer getCode() {
-		return code;
-	}
-	public void setCode(Integer code) {
+		this(message);
 		this.code = code;
 	}
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
 	
 	
 }

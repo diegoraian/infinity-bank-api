@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.infinity.bank.api.config.security.TokenService;
-import com.infinity.bank.api.controller.dto.AuthForm;
-import com.infinity.bank.api.controller.dto.TokenDto;
+import com.infinity.bank.api.controller.dto.request.AuthForm;
+import com.infinity.bank.api.controller.dto.request.TokenDto;
 
 @RestController
 @RequestMapping("/auth")

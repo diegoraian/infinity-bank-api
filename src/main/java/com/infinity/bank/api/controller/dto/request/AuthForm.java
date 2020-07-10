@@ -1,11 +1,8 @@
-package com.infinity.bank.api.controller.dto;
+package com.infinity.bank.api.controller.dto.request;
 
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-
-import lombok.Getter;
-import lombok.Setter;
 
 
 public class AuthForm {
