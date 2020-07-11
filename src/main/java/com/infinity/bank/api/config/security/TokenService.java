@@ -19,7 +19,7 @@ public class TokenService {
 	@Value("${api.jwt.secret}")
 	private String secret;
 	
-	private String DEFAULT_ISSUER = "INFINITY-BANK";
+	private String DEFAULT_ISSUER = "INFINITY-BANK-API";
 
 	public boolean isTokenValid(String token) {
 		try {
@@ -39,7 +39,7 @@ public class TokenService {
 				.setIssuer(DEFAULT_ISSUER)
 				.setIssuedAt(currentDate)
 				.setExpiration(tokenExpirationTime)
-				.setSubject(userLogged.getId().toString())
+				.setSubject(userLogged.getId().toString()) //TODO Need convert to json some userData
 				.signWith(SignatureAlgorithm.HS256, secret)
 				.compact();
 	}

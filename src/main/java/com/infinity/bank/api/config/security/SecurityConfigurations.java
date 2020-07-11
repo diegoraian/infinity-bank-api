@@ -43,12 +43,12 @@ public class SecurityConfigurations  extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/").permitAll()
-		.antMatchers(HttpMethod.POST, "/auth").permitAll()
+		.antMatchers(HttpMethod.POST,  "/auth").permitAll()
 		.antMatchers("/h2/**").permitAll()
-		.anyRequest().authenticated()
-		.and().csrf().disable()
+		.and().cors().disable().csrf().disable()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, userRepository), UsernamePasswordAuthenticationFilter.class)	;
+		
 	}
 	
 	

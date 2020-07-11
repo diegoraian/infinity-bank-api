@@ -9,24 +9,30 @@ import javax.persistence.ManyToOne;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity(name="users")
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User extends AbstractModel implements UserDetails{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3316968569699810795L;
-	@Column( nullable=false)
-	private String name;
+
 	@ManyToOne(optional=false)
 	private BankData bankData;
+	
+	@ManyToOne(optional=false)
+	private Costumer costumer;
 	
 	@Column( nullable=false)
 	private String password;

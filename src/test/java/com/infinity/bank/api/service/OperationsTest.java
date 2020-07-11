@@ -12,8 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.infinity.bank.api.model.BankData;
+import com.infinity.bank.api.model.Costumer;
 import com.infinity.bank.api.model.User;
 import com.infinity.bank.api.repository.BankDataRepository;
+import com.infinity.bank.api.repository.CostumerRepository;
 import com.infinity.bank.api.repository.UserRepository;
 
 import io.jsonwebtoken.lang.Assert;
@@ -27,13 +29,22 @@ public class OperationsTest {
 	@Autowired
 	BankDataRepository bankDataRepository;
 
+	@Autowired
+	CostumerRepository costumerRepository;
 	public User createUserDefaultMock() {
-		User user = User.builder().name("TESTE")
+		User user = User.builder()
 				.password("$2a$10$sFKmbxbG4ryhwPNx/l3pgOJSt.fW1z6YcUnuE2X8APA/Z3NI/oSpq")
-				.bankData(createBankDataDefaultMock()).build();
+				.bankData(createBankDataDefaultMock())
+				.costumer(createCostumerDefaultMock()).build();
 		user.setCreatedAt(new Date());
 		user.setUpdatedAt(new Date());
 		return userRepository.save(user);
+	}
+
+	private Costumer createCostumerDefaultMock() {
+		Costumer costumer = Costumer.builder().name("DIEGO").cpf("12312312387").build();
+		
+		return costumerRepository.save(costumer);
 	}
 
 	public BankData createBankDataDefaultMock() {
